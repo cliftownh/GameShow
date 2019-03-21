@@ -4,6 +4,7 @@
 
 const phraseDiv = document.getElementById('phrase');
 let ul = phraseDiv.querySelector('ul');
+let list;
 
 class Phrase {
  constructor(phrase) {
@@ -15,7 +16,7 @@ class Phrase {
      ul.appendChild(document.createElement('li'));
    }
 
-   let list = ul.getElementsByTagName('li');
+   list = ul.getElementsByTagName('li');
 
    for (let i = 0; i < list.length; i++) {
      if (/[a-z]/.test(this.phrase[i])) {
@@ -26,11 +27,12 @@ class Phrase {
        list[i].textContent = ' ';
      }
    }
+   return list;
  }
 
  checkLetter(key) {
    let match = false;
-   let list = ul.getElementsByTagName('li');
+   list = ul.getElementsByTagName('li');
    for (let i = 0; i < list.length; i++) {
      if (list[i].textContent === key) {
        match = true;
