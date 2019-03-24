@@ -3,7 +3,7 @@
  * Phrase.js */
 
 const phraseDiv = document.getElementById('phrase');
-let ul = phraseDiv.querySelector('ul');
+let ul;
 let list;
 
 class Phrase {
@@ -12,6 +12,7 @@ class Phrase {
  }
 
  addPhraseToDisplay() {
+   ul = phraseDiv.querySelector('ul');
    for (let i = 0; i < this.phrase.length; i++) {
      ul.appendChild(document.createElement('li'));
    }

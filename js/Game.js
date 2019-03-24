@@ -62,6 +62,16 @@ class Game {
       msg.textContent = 'Congratulations, you won!';
     }
     this.missed = 0;
+    while (ul.lastChild) {
+      ul.removeChild(ul.lastChild);
+    }
+    for (let i = 0; i < keys.length; i++) {
+      keys[i].className = 'key';
+      keys[i].disabled = false;
+    }
+    for (let j = 0; j < hearts.length; j++) {
+      hearts[j].src = 'images/liveHeart.png';
+    }
   }
 
 }
