@@ -1,6 +1,5 @@
-/* Treehouse FSJS Techdegree
- * Project 4 - OOP Game App
- * Game.js */
+// Game.js
+
 const score = document.getElementById('scoreboard');
 let phraz;
 let hearts = score.getElementsByTagName('img');
@@ -12,7 +11,8 @@ class Game {
     this.phrases = arr;
     this.activePhrase = null;
   }
-
+  /* The game starts by getting a random phrase and
+     assigning it as a new Phrase object */
   startGame() {
     this.activePhrase = this.getRandomPhrase();
     phraz = new Phrase(this.activePhrase);
@@ -22,7 +22,11 @@ class Game {
   getRandomPhrase() {
     return this.phrases[Math.floor(Math.random() * this.phrases.length)];
   }
-
+  /* If the letter is matched in the phrase,
+   * the key gets the chosen class and turns blue,
+   * then check to see if all letters have been matched.
+   * If the letter doesn't match, the key gets the wrong
+   * class and turns yellow and a heart is lost. */
   handleInteraction(key, match) {
     if (match) {
       key.classList.add('chosen');
@@ -32,7 +36,7 @@ class Game {
       this.removeLife();
     }
   }
-
+  // Game ends if 5 hearts are lost
   removeLife() {
     if (this.missed < 4) {
       this.missed += 1;
@@ -42,7 +46,7 @@ class Game {
       this.gameOver();
     }
   }
-
+  // If all letters are matched, game ends
   checkForWin() {
     let letters = ul.getElementsByClassName('letter');
     let correct = ul.getElementsByClassName('show').length;
@@ -51,7 +55,8 @@ class Game {
       this.gameOver();
     }
   }
-
+  /* Determine if the game is won or lost
+     and reset the gameboard */
   gameOver() {
     overlay.style.display = 'flex';
     if (this.missed === 5) {

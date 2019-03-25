@@ -1,6 +1,4 @@
-/* Treehouse FSJS Techdegree
- * Project 4 - OOP Game App
- * Phrase.js */
+// Phrase.js
 
 const phraseDiv = document.getElementById('phrase');
 let ul;
@@ -10,15 +8,14 @@ class Phrase {
  constructor(phrase) {
    this.phrase = phrase.toLowerCase().split('');
  }
-
+ // Add li elements for each part of the phrase
  addPhraseToDisplay() {
    ul = phraseDiv.querySelector('ul');
    for (let i = 0; i < this.phrase.length; i++) {
      ul.appendChild(document.createElement('li'));
    }
-
    list = ul.getElementsByTagName('li');
-
+   // Give each li the appropriate class name
    for (let i = 0; i < list.length; i++) {
      if (/[a-z]/.test(this.phrase[i])) {
        list[i].className = `hide letter ${this.phrase[i].valueOf()}`;
@@ -30,10 +27,9 @@ class Phrase {
    }
    return list;
  }
-
+ // Check to see if selected letter exists in the phrase
  checkLetter(key) {
    let match = false;
-   list = ul.getElementsByTagName('li');
    for (let i = 0; i < list.length; i++) {
      if (list[i].textContent === key) {
        match = true;
@@ -46,7 +42,7 @@ class Phrase {
      return false;
    }
  }
-
+ // If the letter is in the phrase, it is revealed
  showMatchedLetter(letter) {
    letter.classList.remove('hide');
    letter.classList.add('show');
